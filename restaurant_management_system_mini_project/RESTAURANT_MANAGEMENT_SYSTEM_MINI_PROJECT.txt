@@ -1,0 +1,2128 @@
+use restaurant_management_system;
+Database changed
+mysql> show tables;
++----------------------------------------+
+| Tables_in_restaurant_management_system |
++----------------------------------------+
+| bill                                   |
+| customer                               |
+| employee                               |
+| menu                                   |
+| order_details                          |
+| order_items                            |
+| payment                                |
+| v                                      |
++----------------------------------------+
+
+==================================================================================================
+
+/////////////////////////////CREATE TABLES AND INSERT OPERATION///////////////////////////////
+
+
+create table menu (
+menu_id varchar(8),food_name varchar(20),
+price int(11) default null,
+prep_time time default null,
+type varchar(10),
+category varchar(10) default null
+);
+
+desc menu;
+--
+select * from menu;
+---
+
+ALTER TABLE Menu
+ADD PRIMARY KEY (Menu_id,Food_name);
+
+--------
+insert into menu (Menu_id , Food_name, Price , Prep_time , Type , Category)
+values
+('M101','PavBhaji','80','00:00:20','Veg','MainCourse'),
+('M102','VadaPav','15','00:00:15','Veg','Snack'),
+('M103','PaniPuri','20','00:00:05','Veg','Snack'),
+('M104','Vegetable Pakora','10','00:00:10','Veg','Snack'),
+('M105','Samosa','15','00:00:10','Veg','Snack'),
+('M106','Onion Bhaji','10','00:00:10','Veg','Snack'),
+('M107','Green Salad','30','00:00:10','Veg','Starter'),
+('M108','Papad','10','00:00:05','Veg','Starter'),
+('M109','Chutney','10','00:00:05','Veg','Snack'),
+('M110','Potato Chat','30','00:00:15','Veg','Snack'),
+('M111','Bombay Aloo','150','00:00:20','Veg','MainCourse'),
+('M112','Paneer Masala','150','00:00:20','Veg','MainCourse'),
+('M113','Paneer Tikka','150','00:00:20','Veg','MainCourse'),
+('M114','Palak Panner','130','00:00:20','Veg','MainCourse'),
+('M115','Kadai Paneer','120','00:00:20','Veg','MainCourse'),
+('M116','Aloo Gobi','80','00:00:15','Veg','MainCourse'),
+('M117','Punjabi Chole','60','00:00:15','Veg','MainCourse'),
+('M118','Dal Tadka','80','00:00:20','Veg','MainCourse'),
+('M119','Dal Makhani','80','00:00:20','Veg','MainCourse'),
+('M120','Jeera Rice','60','00:00:15','Veg','MainCourse'),
+('M121','Veg Biryani','80','00:00:20','Veg','MainCourse'),
+('M122','Lemon Rice','60','00:00:20','Veg','MainCourse'),
+('M123','Steamed Rice','40','00:00:15','Veg','MainCourse'),
+('M124','Chapati','10','00:00:05','Veg','MainCourse'),
+('M125','Garlic Nan','15','00:00:05','Veg','MainCourse'),
+('M126','Bhakri','10','00:00:05','Veg','MainCourse'),
+('M127','Chicken Tikka','180','00:00:20','Non-Veg','MainCourse'),
+('M128','Chicken Curry','180','00:00:20','Non-Veg','MainCourse'),
+('M129','Butter Chicken','220','00:00:20','Non-Veg','MainCourse'),
+('M130','Hyderabadi Biryani','150','00:00:20','Non-Veg','MainCourse'),
+('M131','Chicken Handi','400','00:00:30','Non-Veg','MainCourse'),
+('M132','Chicken Chilli','90','00:00:20','Non-Veg','Starter'),
+('M133','Chicken Lollipop','120','00:00:20','Non-Veg','Starter'),
+('M134','Chicken Tandoor','300','00:00:30','Non-Veg','Starter'),
+('M135','Mutton Handi','400','00:00:30','Non-Veg','MainCourse'),
+('M136','Mutton Masala','300','00:00:30','Non-Veg','MainCourse'),
+('M137','Mutton Kolhapuri','280','00:00:30','Non-Veg','MainCourse'),
+('M138','Kaleji Fry','250','00:00:20','Non-Veg','MainCourse'),
+('M139','Mutton Sauji','300','00:00:20','Non-Veg','MainCourse'),
+('M140','Pithal','50','00:00:10','Veg','MainCourse'),
+('M141','Shev Bhaji','70','00:00:15','Veg','MainCourse'),
+('M142','Vang Bharit','80','00:00:20','Veg','MainCourse'),
+('M143','Dal Fry','130','00:00:20','Veg','MainCourse'),
+('M144','Gulab Jam','40','00:00:05','Veg','Dessert'),
+('M145','Ras Gulla','50','00:00:05','Veg','Dessert'),
+('M146','Ras Malai','70','00:00:05','Veg','Dessert'),
+('M147','Ice-Cream','50','00:00:05','Veg','Dessert'),
+('M148','Lassi','30','00:00:05','Veg','Dessert'),
+('M149','Dahi','30','00:00:05','Veg','Dessert'),
+('M150','Coca-Cola','50','00:00:05','Veg','Drinks'),
+('M151','Sprite','50','00:00:05','Veg','Drinks'),
+('M152','Mineral Water','20','00:00:05','Veg','Drinks');
+
+
+
+mysql> select * from menu;
++---------+--------------------+-------+-----------+---------+------------+
+| menu_id | food_name          | price | prep_time | type    | category   |
++---------+--------------------+-------+-----------+---------+------------+
+| M101    | PavBhaji           |    80 | 00:00:20  | Veg     | MainCourse |
+| M102    | VadaPav            |    15 | 00:00:15  | Veg     | Snack      |
+| M103    | PaniPuri           |    20 | 00:00:05  | Veg     | Snack      |
+| M104    | Vegetable Pakora   |    10 | 00:00:10  | Veg     | Snack      |
+| M105    | Samosa             |    15 | 00:00:10  | Veg     | Snack      |
+| M106    | Onion Bhaji        |    10 | 00:00:10  | Veg     | Snack      |
+| M107    | Green Salad        |    30 | 00:00:10  | Veg     | Starter    |
+| M108    | Papad              |    10 | 00:00:05  | Veg     | Starter    |
+| M109    | Chutney            |    10 | 00:00:05  | Veg     | Snack      |
+| M110    | Potato Chat        |    30 | 00:00:15  | Veg     | Snack      |
+| M111    | Bombay Aloo        |   150 | 00:00:20  | Veg     | MainCourse |
+| M112    | Paneer Masala      |   150 | 00:00:20  | Veg     | MainCourse |
+| M113    | Paneer Tikka       |   150 | 00:00:20  | Veg     | MainCourse |
+| M114    | Palak Panner       |   130 | 00:00:20  | Veg     | MainCourse |
+| M115    | Kadai Paneer       |   120 | 00:00:20  | Veg     | MainCourse |
+| M116    | Aloo Gobi          |    80 | 00:00:15  | Veg     | MainCourse |
+| M117    | Punjabi Chole      |    60 | 00:00:15  | Veg     | MainCourse |
+| M118    | Dal Tadka          |    80 | 00:00:20  | Veg     | MainCourse |
+| M119    | Dal Makhani        |    80 | 00:00:20  | Veg     | MainCourse |
+| M120    | Jeera Rice         |    60 | 00:00:15  | Veg     | MainCourse |
+| M121    | Veg Biryani        |    80 | 00:00:20  | Veg     | MainCourse |
+| M122    | Lemon Rice         |    60 | 00:00:20  | Veg     | MainCourse |
+| M123    | Steamed Rice       |    40 | 00:00:15  | Veg     | MainCourse |
+| M124    | Chapati            |    10 | 00:00:05  | Veg     | MainCourse |
+| M125    | Garlic Nan         |    15 | 00:00:05  | Veg     | MainCourse |
+| M126    | Bhakri             |    10 | 00:00:05  | Veg     | MainCourse |
+| M127    | Chicken Tikka      |   180 | 00:00:20  | Non-Veg | MainCourse |
+| M128    | Chicken Curry      |   180 | 00:00:20  | Non-Veg | MainCourse |
+| M129    | Butter Chicken     |   220 | 00:00:20  | Non-Veg | MainCourse |
+| M130    | Hyderabadi Biryani |   150 | 00:00:20  | Non-Veg | MainCourse |
+| M131    | Chicken Handi      |   400 | 00:00:30  | Non-Veg | MainCourse |
+| M132    | Chicken Chilli     |    90 | 00:00:20  | Non-Veg | Starter    |
+| M133    | Chicken Lollipop   |   120 | 00:00:20  | Non-Veg | Starter    |
+| M134    | Chicken Tandoor    |   300 | 00:00:30  | Non-Veg | Starter    |
+| M135    | Mutton Handi       |   400 | 00:00:30  | Non-Veg | MainCourse |
+| M136    | Mutton Masala      |   300 | 00:00:30  | Non-Veg | MainCourse |
+| M137    | Mutton Kolhapuri   |   280 | 00:00:30  | Non-Veg | MainCourse |
+| M138    | Kaleji Fry         |   250 | 00:00:20  | Non-Veg | MainCourse |
+| M139    | Mutton Sauji       |   300 | 00:00:20  | Non-Veg | MainCourse |
+| M140    | Pithal             |    50 | 00:00:10  | Veg     | MainCourse |
+| M141    | Shev Bhaji         |    70 | 00:00:15  | Veg     | MainCourse |
+| M142    | Vang Bharit        |    80 | 00:00:20  | Veg     | MainCourse |
+| M143    | Dal Fry            |   130 | 00:00:20  | Veg     | MainCourse |
+| M144    | Gulab Jam          |    40 | 00:00:05  | Veg     | Dessert    |
+| M145    | Ras Gulla          |    50 | 00:00:05  | Veg     | Dessert    |
+| M146    | Ras Malai          |    70 | 00:00:05  | Veg     | Dessert    |
+| M147    | Ice-Cream          |    50 | 00:00:05  | Veg     | Dessert    |
+| M148    | Lassi              |    30 | 00:00:05  | Veg     | Dessert    |
+| M149    | Dahi               |    30 | 00:00:05  | Veg     | Dessert    |
+| M150    | Coca-Cola          |    50 | 00:00:05  | Veg     | Drinks     |
+| M151    | Sprite             |    50 | 00:00:05  | Veg     | Drinks     |
+| M152    | Mineral Water      |    20 | 00:00:05  | Veg     | Drinks     |
++---------+--------------------+-------+-----------+---------+------------+
+
+
+
+
+
+
+
+=========================================END===========================================================
+
+ create table Employee
+(emp_id varchar(8) NOT NULL,
+Ename varchar(20) NOT NULL,
+Age int NOT NULL,
+Designation varchar(10) DEFAULT NULL,
+Address varchar(30) DEFAULT NULL,
+City varchar (15) DEFAULT NULL,
+State varchar(15) DEFAULT NULL,
+Pincode varchar(10) DEFAULT NULL,
+Contact_no varchar(13) DEFAULT NULL,
+Emp_sal float NOT NULL,
+hiring_date date DEFAULT NULL
+);
+
+
+
+--------------------------
+ ALTER TABLE employee  ADD PRIMARY KEY (emp_id,Ename);
+
+desc employee;
+
+
+mysql> desc employee;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| emp_id      | varchar(8)  | NO   | PRI | NULL    |       |
+| Ename       | varchar(20) | NO   | PRI | NULL    |       |
+| Designation | varchar(10) | YES  |     | NULL    |       |
+| Address     | varchar(30) | YES  |     | NULL    |       |
+| City        | varchar(15) | YES  |     | NULL    |       |
+| State       | varchar(15) | YES  |     | NULL    |       |
+| Pincode     | varchar(10) | YES  |     | NULL    |       |
+| Contact_no  | varchar(13) | YES  |     | NULL    |       |
+| Emp_sal     | float       | NO   |     | NULL    |       |
+| hiring_date | date        | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+
+------------------------
+
+ insert into employee(emp_id,Ename,age,Designation, Address, City ,State , Pincode, Contact_no , Emp_sal , hiring_date)
+values('E01','Aniket Darunde',25,'Manager','JaiBhim Nagar', 'Nagpur','Maharashtra','440027','7755902645','150000','2018-08-01'),
+('E02','Bhavesh Bhangale',21,'Manager','Hanuman Nagar', 'Nagpur','Maharashtra','440027','7775902644','150000','2018-08-01'),
+('E03','Sanklap Bhale',45,'Chef','Uttam Nagar', 'Nagpur','Maharashtra','440029','8989457685','25000','2018-08-01'),
+('E04','Vinod Bhalerao',35,'Chef','Bajaj Nagar', 'Nagpur','Maharashtra','440030','8926457841','20000','2019-02-20'),
+('E05','Mohit Chavan',19,'Waiter','Laxmi Nagar', 'Nagpur','Maharashtra','440027','8943215874','15000','2018-08-02'),
+('E06','Rupal Kambale',23,'Waiter','Shanti Nagar', 'Nagpur','Maharashtra','440027','7755954874','15000','2019-03-04'),
+('E07','Pankaj Mishra',25,'Waiter','Pratap Nagar', 'Nagpur','Maharashtra','440028','8945902645','10000','2020-08-01'),
+('E08','Akash Pande',27,'Cleaner','Umaan Nagar', 'Nagpur','Maharashtra','440026','9954402645','8000','2018-08-03');
+
+
+-----------------------------------------
+
+mysql> select * from employee;
++--------+------------------+-----+-------------+---------------+--------+-------------+---------+------------+---------+-------------+
+| emp_id | Ename            | Age | Designation | Address       | City   | State       | Pincode | Contact_no | Emp_sal | hiring_date |
++--------+------------------+-----+-------------+---------------+--------+-------------+---------+------------+---------+-------------+
+| E01    | Aniket Darunde   |  25 | Manager     | JaiBhim Nagar | Nagpur | Maharashtra | 440027  | 7755902645 |  150000 | 2018-08-01  |
+| E02    | Bhavesh Bhangale |  21 | Manager     | Hanuman Nagar | Nagpur | Maharashtra | 440027  | 7775902644 |  150000 | 2018-08-01  |
+| E03    | Sanklap Bhale    |  45 | Chef        | Uttam Nagar   | Nagpur | Maharashtra | 440029  | 8989457685 |   25000 | 2018-08-01  |
+| E04    | Vinod Bhalerao   |  35 | Chef        | Bajaj Nagar   | Nagpur | Maharashtra | 440030  | 8926457841 |   20000 | 2019-02-20  |
+| E05    | Mohit Chavan     |  19 | Waiter      | Laxmi Nagar   | Nagpur | Maharashtra | 440027  | 8943215874 |   15000 | 2018-08-02  |
+| E06    | Rupal Kambale    |  23 | Waiter      | Shanti Nagar  | Nagpur | Maharashtra | 440027  | 7755954874 |   15000 | 2019-03-04  |
+| E07    | Pankaj Mishra    |  25 | Waiter      | Pratap Nagar  | Nagpur | Maharashtra | 440028  | 8945902645 |   10000 | 2020-08-01  |
+| E08    | Akash Pande      |  27 | Cleaner     | Umaan Nagar   | Nagpur | Maharashtra | 440026  | 9954402645 |    8000 | 2018-08-03  |
++--------+------------------+-----+-------------+---------------+--------+-------------+---------+------------+---------+-------------+
+
+================================================END===============================================================
+
+
+
+//////////////////////////////FOR TRIGGER USE////////////////////////////////
+
+create table Employee_Left
+(emp_id varchar(8) NOT NULL,
+Ename varchar(20) NOT NULL,
+Age int NOT NULL,
+Designation varchar(10) DEFAULT NULL,
+Address varchar(30) DEFAULT NULL,
+City varchar (15) DEFAULT NULL,
+State varchar(15) DEFAULT NULL,
+Pincode varchar(10) DEFAULT NULL,
+Contact_no varchar(13) DEFAULT NULL,
+Emp_sal float NOT NULL,
+hiring_date date DEFAULT NULL,
+left_date date
+);
+
+----------------------------------------------------------
+
+
+
+
+mysql> desc employee_left;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| emp_id      | varchar(8)  | NO   |     | NULL    |       |
+| Ename       | varchar(20) | NO   |     | NULL    |       |
+| Age         | int(11)     | NO   |     | NULL    |       |
+| Designation | varchar(10) | YES  |     | NULL    |       |
+| Address     | varchar(30) | YES  |     | NULL    |       |
+| City        | varchar(15) | YES  |     | NULL    |       |
+| State       | varchar(15) | YES  |     | NULL    |       |
+| Pincode     | varchar(10) | YES  |     | NULL    |       |
+| Contact_no  | varchar(13) | YES  |     | NULL    |       |
+| Emp_sal     | float       | NO   |     | NULL    |       |
+| hiring_date | date        | YES  |     | NULL    |       |
+| left_date   | date        | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===================================================================================================================
+
+create table CUSTOMER(
+	Customer_Id varchar(8) NOT NULL ,
+	Cname varchar(30) NOT NULL,
+	City varchar (15) NOT NULL,
+	Pincode varchar(10) ,
+	Contact varchar(20) NOT NULL,
+	Email_Id varchar(50)
+);
+-----------------------
+
+ALTER TABLE CUSTOMER
+ADD PRIMARY KEY (Customer_id);
+-----------------------
+
+mysql> desc customer;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| Customer_Id | varchar(8)  | NO   | PRI | NULL    |       |
+| Cname       | varchar(30) | NO   |     | NULL    |       |
+| City        | varchar(15) | NO   |     | NULL    |       |
+| Pincode     | varchar(10) | YES  |     | NULL    |       |
+| Contact     | varchar(20) | NO   |     | NULL    |       |
+| Email_Id    | varchar(50) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+
+
+
+------------------------------------------------------
+
+insert into customer (Customer_Id, Cname , City , Pincode , Contact , Email_id)
+values
+('C001','Ashwini Jadhav','Nashik','422656','8648664858','AshwiniJ@gmail.com'),
+('C002','Atul Suryavanshi','Kolhapur','424587','9845631245','Atul12@gmail.com'),
+('C003','Bimensh Yadav','Mumbai','400002','8648458965','Byadav45@gmail.com'),
+('C004','Chirag Dave','Mumbai','400454','9878654858','ChiragDave4@gmail.com'),
+('C005','Ankit Sonawane','Mumbai','411454','9564877219','Ankit123@gmail.com'),
+('C006','Ankeeta Pol','Sangli','422632','8645794858','Ankeetap@gmail.com'),
+('C007','Anirudhha kingaonkar','Aurangabad','422216','8648664151','Anirudhak@gmail.com'),
+('C008','Arati Koche','Nagpur','442658','9564764858','Arati@gmail.com'),
+('C009','Anuja Padwal','Solapur','322656','9852664858','AnujaP@gmail.com'),
+('C010','Anjali Deshmukh','chandrapur','422656','8648664858','Anjali@gmail.com'),
+('C011','Archana mahatre','Mumbai','458656','9567664858','Archana@gmail.com'),
+('C012','Anup Hingmire','Mumbai','4258786','8975664858','Anup@gmail.com'),
+('C013','Chhaya Munji','Thane','422006','9845631245','chhayam@gmail.com'),
+('C014','Chetan Bhuvad','Mumbai','400124','9878541263','chetanb12@gmail.com');
+
+----------------------------------------------
+
+select * from customer;
+
+mysql> select * from customer;
++-------------+----------------------+------------+---------+------------+-----------------------+
+| Customer_Id | Cname                | City       | Pincode | Contact    | Email_Id              |
++-------------+----------------------+------------+---------+------------+-----------------------+
+| C001        | Ashwini Jadhav       | Nashik     | 422656  | 8648664858 | AshwiniJ@gmail.com    |
+| C002        | Atul Suryavanshi     | Kolhapur   | 424587  | 9845631245 | Atul12@gmail.com      |
+| C003        | Bimensh Yadav        | Mumbai     | 400002  | 8648458965 | Byadav45@gmail.com    |
+| C004        | Chirag Dave          | Mumbai     | 400454  | 9878654858 | ChiragDave4@gmail.com |
+| C005        | Ankit Sonawane       | Mumbai     | 411454  | 9564877219 | Ankit123@gmail.com    |
+| C006        | Ankeeta Pol          | Sangli     | 422632  | 8645794858 | Ankeetap@gmail.com    |
+| C007        | Anirudhha kingaonkar | Aurangabad | 422216  | 8648664151 | Anirudhak@gmail.com   |
+| C008        | Arati Koche          | Nagpur     | 442658  | 9564764858 | Arati@gmail.com       |
+| C009        | Anuja Padwal         | Solapur    | 322656  | 9852664858 | AnujaP@gmail.com      |
+| C010        | Anjali Deshmukh      | chandrapur | 422656  | 8648664858 | Anjali@gmail.com      |
+| C011        | Archana mahatre      | Mumbai     | 458656  | 9567664858 | Archana@gmail.com     |
+| C012        | Anup Hingmire        | Mumbai     | 4258786 | 8975664858 | Anup@gmail.com        |
+| C013        | Chhaya Munji         | Thane      | 422006  | 9845631245 | chhayam@gmail.com     |
+| C014        | Chetan Bhuvad        | Mumbai     | 400124  | 9878541263 | chetanb12@gmail.com   |
++-------------+----------------------+------------+---------+------------+-----------------------+
+
+
+==============================================END=========================================================
+
+
+
+create table order_details(
+Customer_Id varchar (8) NOT NULL,
+Order_date date NOT NULL,
+Order_id int NOT NULL,
+Table_id varchar(8)
+);
+
+--------------------------------------
+ALTER TABLE order_details
+  ADD PRIMARY KEY (order_id);
+desc order_details;
+ALTER TABLE order_details
+  ADD CONSTRAINT order_details_ibfk_1 FOREIGN KEY (Customer_id)
+  REFERENCES customer (Customer_id) ON DELETE CASCADE ON UPDATE CASCADE;
+----------------------------------------------
+
+mysql> desc order_details;
++-------------+------------+------+-----+---------+-------+
+| Field       | Type       | Null | Key | Default | Extra |
++-------------+------------+------+-----+---------+-------+
+| Customer_Id | varchar(8) | NO   | MUL | NULL    |       |
+| Order_date  | date       | NO   |     | NULL    |       |
+| Order_id    | int(11)    | NO   | PRI | NULL    |       |
+| Table_id    | varchar(8) | YES  |     | NULL    |       |
++-------------+------------+------+-----+---------+-------+
+
+----------------------------------------------------------
+
+insert into order_details(Customer_Id , Order_date , Order_id , Table_id)
+values
+('C001','2020-12-23',001,'T03'),
+('C002','2020-12-23',002,'T01'),
+('C003','2020-12-23',003,'T02'),
+('C004','2020-12-24',004,'T05'),
+('C005','2020-12-24',005,'T01'),
+('C006','2020-12-26',006,'T05'),
+('C007','2020-12-26',007,'T02'),
+('C008','2020-12-27',008,'T01'),
+('C009','2020-12-27',009,'T03'),
+('C010','2020-12-28',010,'T05'),
+('C011','2021-01-01',011,'T01'),
+('C012','2021-01-01',012,'T02'),
+('C013','2021-01-02',013,'T03'),
+('C014','2021-01-03',014,'T01');
+
+------------------------------------------------------
+
+
+mysql> select * from order_details;
++-------------+------------+----------+----------+
+| Customer_Id | Order_date | Order_id | Table_id |
++-------------+------------+----------+----------+
+| C001        | 2020-12-23 |        1 | T03      |
+| C002        | 2020-12-23 |        2 | T01      |
+| C003        | 2020-12-23 |        3 | T02      |
+| C004        | 2020-12-24 |        4 | T05      |
+| C005        | 2020-12-24 |        5 | T01      |
+| C006        | 2020-12-26 |        6 | T05      |
+| C007        | 2020-12-26 |        7 | T02      |
+| C008        | 2020-12-27 |        8 | T01      |
+| C009        | 2020-12-27 |        9 | T03      |
+| C010        | 2020-12-28 |       10 | T05      |
+| C011        | 2021-01-01 |       11 | T01      |
+| C012        | 2021-01-01 |       12 | T02      |
+| C013        | 2021-01-02 |       13 | T03      |
+| C014        | 2021-01-03 |       14 | T01      |
++-------------+------------+----------+----------+
+
+
+=============================================END===================================================
+
+
+
+create table order_items
+(order_id int not null,
+Menu_id varchar(8) not null,
+Food_name varchar(20),
+Price int,
+Quantity int,
+Amount float,
+order_time time 
+);
+
+desc order_items;
+  
+ALTER TABLE order_items
+  ADD PRIMARY KEY (Menu_id,Order_id),
+  ADD KEY Menu_id (Menu_id,Food_name);
+
+ALTER TABLE order_items
+ADD CONSTRAINT order_items_ibfk_1 FOREIGN KEY (Menu_id,Food_name) 
+REFERENCES Menu (Menu_id, Food_name) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+-----------------------------------
+mysql> desc order_items;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| order_id   | int(11)     | NO   | PRI | NULL    |       |
+| Menu_id    | varchar(8)  | NO   | MUL | NULL    |       |
+| Food_name  | varchar(20) | YES  |     | NULL    |       |
+| Price      | int(11)     | YES  |     | NULL    |       |
+| Quantity   | int(11)     | YES  |     | NULL    |       |
+| Amount     | float       | YES  |     | NULL    |       |
+| order_time | time        | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+---------------------------------------------------------
+
+insert into order_items(order_id , Menu_id , Food_name, Price , Quantity , Amount , order_time)
+values
+(001,'M105','Samosa',15,2,30.00,'19:00:20'),
+(002,'M111','Bombay Aloo',150,2,300.0,'17:01:20'),
+(003,'M115','Kadai Paneer',120,1,120.00,'13:15:20'),
+(004,'M102','Vadapav',15,2,30.00,'18:00:20'),
+(005,'M107','Green Salad',30,2,60.00,'12:00:20'),
+(006,'M118','Dal Tadka',80,2,160.00,'10:30:20'),
+(007,'M132','Chicken chilli',90,3,270.00,'19:38:10'),
+(008,'M130','Hyderabadi Biryani',150,2,300.00,'15:20:30'),
+(009,'M111','Bombay Aloo',150,2,300.0,'17:01:20'),
+(010,'M115','Kadai Paneer',120,1,120.00,'13:15:20'),
+(011,'M102','Vadapav',15,2,30.00,'18:00:20'),
+(012,'M107','Green Salad',30,2,60.00,'12:00:20'),
+(013,'M118','Dal Tadka',80,2,160.00,'10:30:20'),
+(014,'M110','Potato Chat',30,3,90.00,'21:00:20');
+
+----------------------------------
+mysql> select * from order_items;
++----------+---------+--------------------+-------+----------+--------+------------+
+| order_id | Menu_id | Food_name          | Price | Quantity | Amount | order_time |
++----------+---------+--------------------+-------+----------+--------+------------+
+|        1 | M105    | Samosa             |    15 |        2 |     30 | 19:00:20   |
+|        2 | M111    | Bombay Aloo        |   150 |        2 |    300 | 17:01:20   |
+|        3 | M115    | Kadai Paneer       |   120 |        1 |    120 | 13:15:20   |
+|        4 | M102    | Vadapav            |    15 |        2 |     30 | 18:00:20   |
+|        5 | M107    | Green Salad        |    30 |        2 |     60 | 12:00:20   |
+|        6 | M118    | Dal Tadka          |    80 |        2 |    160 | 10:30:20   |
+|        7 | M132    | Chicken chilli     |    90 |        3 |    270 | 19:38:10   |
+|        8 | M130    | Hyderabadi Biryani |   150 |        2 |    300 | 15:20:30   |
+|        9 | M111    | Bombay Aloo        |   150 |        2 |    300 | 17:01:20   |
+|       10 | M115    | Kadai Paneer       |   120 |        1 |    120 | 13:15:20   |
+|       11 | M102    | Vadapav            |    15 |        2 |     30 | 18:00:20   |
+|       12 | M107    | Green Salad        |    30 |        2 |     60 | 12:00:20   |
+|       13 | M118    | Dal Tadka          |    80 |        2 |    160 | 10:30:20   |
+|       14 | M110    | Potato Chat        |    30 |        3 |     90 | 21:00:20   |
++----------+---------+--------------------+-------+----------+--------+------------+
+
+
+==========================================END===================================================
+
+create table bill(
+Bill_No int NOT NULL auto_increment primary key,
+Amount bigint(20) ,
+Tax float ,
+Total_Amount bigint,
+Customer_id varchar(8),
+Order_id int ,
+Table_id varchar(8)
+);
+
+ALTER TABLE bill
+ADD KEY Customer_id (Customer_id),
+  ADD KEY Order_id (Order_id);
+
+desc bill;
+ALTER TABLE bill
+  ADD CONSTRAINT bill_ibfk_2 FOREIGN KEY (Customer_id)
+  REFERENCES customer (Customer_id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+  desc bill;
+
+mysql> desc bill;
++--------------+------------+------+-----+---------+----------------+
+| Field        | Type       | Null | Key | Default | Extra          |
++--------------+------------+------+-----+---------+----------------+
+| Bill_No      | int(11)    | NO   | PRI | NULL    | auto_increment |
+| Amount       | bigint(20) | YES  |     | NULL    |                |
+| Tax          | float      | YES  |     | NULL    |                |
+| Total_Amount | bigint(20) | YES  |     | NULL    |                |
+| Customer_id  | varchar(8) | YES  | MUL | NULL    |                |
+| Order_id     | int(11)    | YES  | MUL | NULL    |                |
+| Table_id     | varchar(8) | YES  |     | NULL    |                |
++--------------+------------+------+-----+---------+----------------+
+
+--------------------------------------------------------------------
+
+
+insert into bill ( Bill_no , Amount , Tax , Total_Amount , Customer_id,Order_id , Table_id)
+values
+(101 , 30,2,32,'C001',001,'T03'),
+(102 , 300,25,315,'C002',002,'T01'),
+(103 , 120,6,126,'C003',003,'T02'),
+(104 , 30,2,32,'C004',004,'T05'),
+(105 , 60,5,65,'C005',005,'T01'),
+(106 , 160,8,168,'C006',006,'T05'),
+(107 , 270,12,282,'C007',007,'T02'),
+(108 , 300,15,315,'C008',008,'T01'),
+(109 , 300,15,315,'C009',009,'T03'),
+(110 , 120,6,126,'C010',010,'T05'),
+(111 , 30,2,32,'C011',011,'T01'),
+(112 , 60,5,65,'C012',012,'T02'),
+(113 , 160,8,168,'C013',013,'T03'),
+(114 , 90,6,96,'C014',014,'T01');
+
+
+
+
+
+mysql> select * from bill;
++---------+--------+------+--------------+-------------+----------+----------+
+| Bill_No | Amount | Tax  | Total_Amount | Customer_id | Order_id | Table_id |
++---------+--------+------+--------------+-------------+----------+----------+
+|     101 |     30 |    2 |           32 | C001        |        1 | T03      |
+|     102 |    300 |   25 |          315 | C002        |        2 | T01      |
+|     103 |    120 |    6 |          126 | C003        |        3 | T02      |
+|     104 |     30 |    2 |           32 | C004        |        4 | T05      |
+|     105 |     60 |    5 |           65 | C005        |        5 | T01      |
+|     106 |    160 |    8 |          168 | C006        |        6 | T05      |
+|     107 |    270 |   12 |          282 | C007        |        7 | T02      |
+|     108 |    300 |   15 |          315 | C008        |        8 | T01      |
+|     109 |    300 |   15 |          315 | C009        |        9 | T03      |
+|     110 |    120 |    6 |          126 | C010        |       10 | T05      |
+|     111 |     30 |    2 |           32 | C011        |       11 | T01      |
+|     112 |     60 |    5 |           65 | C012        |       12 | T02      |
+|     113 |    160 |    8 |          168 | C013        |       13 | T03      |
+|     114 |     90 |    6 |           96 | C014        |       14 | T01      |
++---------+--------+------+--------------+-------------+----------+----------+
+
+===========================================END==========================================================
+
+
+
+
+CREATE TABLE payment (
+  Date_of_payment date DEFAULT NULL,
+  Payment_id int(11) NOT NULL ,
+  Payment_mode varchar(10) DEFAULT NULL,
+  Paid_amount bigint(20) DEFAULT NULL,
+  Bill_no int(11) DEFAULT NULL
+);
+
+--------------------------------------------
+ALTER TABLE payment
+  ADD PRIMARY KEY (Payment_id),
+  ADD KEY Bill_no (Bill_no);
+ALTER TABLE payment
+MODIFY Payment_id int(11) NOT NULL AUTO_INCREMENT;
+--------------------------------------------
+
+ALTER TABLE bill
+  ADD CONSTRAINT bill_ibfk_2 FOREIGN KEY (Customer_id)
+  REFERENCES customer (Customer_id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+---------------------------------------------
+desc payment;
+mysql> desc payment;
++-----------------+-------------+------+-----+---------+----------------+
+| Field           | Type        | Null | Key | Default | Extra          |
++-----------------+-------------+------+-----+---------+----------------+
+| Date_of_payment | date        | YES  |     | NULL    |                |
+| Payment_id      | int(11)     | NO   | PRI | NULL    | auto_increment |
+| Payment_mode    | varchar(10) | YES  |     | NULL    |                |
+| Paid_amount     | bigint(20)  | YES  |     | NULL    |                |
+| Bill_no         | int(11)     | YES  | MUL | NULL    |                |
++-----------------+-------------+------+-----+---------+----------------+
+---------------------------------------------------------------------------------
+
+
+INSERT INTO payment (Date_of_payment, Payment_id, Payment_mode, Paid_amount, Bill_no) VALUES
+('2020-12-23',11, 'CASH',32, 101),
+('2020-12-23',12, 'UPI',315, 102),
+('2020-12-23',13, 'UPI',126, 103),
+('2020-12-24',14, 'CARD',32, 104),
+('2020-12-24',15, 'CASH',65, 105),
+('2020-12-26',16, 'CASH',168, 106),
+('2020-12-26',17, 'UPI',282, 107),
+('2020-12-27',18, 'CARD',315, 108),
+('2020-12-27',19, 'CASH',315, 109),
+('2020-12-28',20, 'CASH',126, 110),
+('2021-01-01',21, 'UPI',32, 111),
+('2020-01-01',22, 'UPI',65, 112),
+('2020-01-02',23, 'CASH',168, 113),
+('2020-01-03',24, 'CARD',96, 114);
+---------------------------------------------
+
+mysql> select * from payment;
++-----------------+------------+--------------+-------------+---------+
+| Date_of_payment | Payment_id | Payment_mode | Paid_amount | Bill_no |
++-----------------+------------+--------------+-------------+---------+
+| 2020-12-23      |         11 | CASH         |          32 |     101 |
+| 2020-12-23      |         12 | UPI          |         315 |     102 |
+| 2020-12-23      |         13 | UPI          |         126 |     103 |
+| 2020-12-24      |         14 | CARD         |          32 |     104 |
+| 2020-12-24      |         15 | CASH         |          65 |     105 |
+| 2020-12-26      |         16 | CASH         |         168 |     106 |
+| 2020-12-26      |         17 | UPI          |         282 |     107 |
+| 2020-12-27      |         18 | CARD         |         315 |     108 |
+| 2020-12-27      |         19 | CASH         |         315 |     109 |
+| 2020-12-28      |         20 | CASH         |         126 |     110 |
+| 2021-01-01      |         21 | UPI          |          32 |     111 |
+| 2020-01-01      |         22 | UPI          |          65 |     112 |
+| 2020-01-02      |         23 | CASH         |         168 |     113 |
+| 2020-01-03      |         24 | CARD         |          96 |     114 |
++-----------------+------------+--------------+-------------+---------+
+
+
+=======================================================================================================
+
+
+
+ create table Inventory(    
+Stock_Id int(5) NOT NULL,   
+Stock_Name varchar(30) NOT NULL,   
+Quantity varchar(2) NOT NULL,    
+stock_type varchar(100) DEFAULT NULL,    
+Supp_Name varchar(50) NOT NULL,
+PRIMARY KEY(Stock_Id)
+);
+
+----------------------------------------------------------
+
+mysql> desc inventory;
++----------------+--------------+------+-----+---------+-------+
+| Field          | Type         | Null | Key | Default | Extra |
++----------------+--------------+------+-----+---------+-------+
+| Stock_Id       | int(5)       | NO   | PRI | NULL    |       |
+| Stock_Name     | varchar(30)  | NO   |     | NULL    |       |
+| Quantity       | varchar(2)   | NO   |     | NULL    |       |
+| stock_type     | varchar(100) | YES  |     | NULL    |       |
+| Supp_Name      | varchar(50)  | NO   |     | NULL    |       |
++----------------+--------------+------+-----+---------+-------+
+
+
+-----------------------------------------------------------------------------
+
+mysql> insert into Inventory (Stock_Id, Stock_Name, Quantity, stock_type, Supp_Name) 
+values (1,"Tomato","10","Fruit","Ramlal Fruits"), 
+(2,"Lemon","3","Fruit","Ramlal Fruits"), 
+(3,"Watermelon","5","Fruit","Ramlal Fruits"), 
+(4,"Carrot","2","Vegetable","Shyamlal Vegetables"), 
+(5,"Brocolli","3","Vegetable","Shyamlal Vegetables"), 
+(6,"Cauliflower","4","Vegetable","Shyamlal Vegetables"), 
+(7,"Onion","20","Vegetable","Shyamlal Vegetables"), 
+(8,"Potato","20","Vegetable","Shyamlal Vegetables"), 
+(9,"Red Pepper","15","Vegetable","Shyamlal Vegetables"), 
+(10,"Cabbage","10","Vegetable","Shyamlal Vegetables"), 
+(11,"Garlic","10","Vegetable","Shyamlal Vegetables"), 
+(12,"Coriander","5","Vegetable","Shyamlal Vegetables"), 
+(13,"Green Peas","7","Vegetable","Shyamlal Vegetables"), 
+(14,"Green Pepper","6","Vegetable","Shyamlal Vegetables"), 
+(15,"Cinnamon","6","Vegetable","Shyamlal Vegetables"), 
+(16,"Mushrooms","3","Vegetable","Shyamlal Vegetables"), 
+(17,"Chicken","25","Meat","Royal Meat Shop"), 
+(18,"Mutton","20","Meat","Royal Meat Shop");
+
+
+----------------------------------------------------------------------------
+
+mysql> select * from inventory;
++----------+--------------+----------------+-------------+---------------------+
+| Stock_Id | Stock_Name   | Quantity       | stock_type  | Supp_Name           |
++----------+--------------+----------------+-------------+---------------------+
+|        1 | Tomato       | 10             | Fruit       | Ramlal Fruits       |
+|        2 | Lemon        | 3              | Fruit       | Ramlal Fruits       |
+|        3 | Watermelon   | 5              | Fruit       | Ramlal Fruits       |
+|        4 | Carrot       | 2              | Vegetable   | Shyamlal Vegetables |
+|        5 | Brocolli     | 3              | Vegetable   | Shyamlal Vegetables |
+|        6 | Cauliflower  | 4              | Vegetable   | Shyamlal Vegetables |
+|        7 | Onion        | 20             | Vegetable   | Shyamlal Vegetables |
+|        8 | Potato       | 20             | Vegetable   | Shyamlal Vegetables |
+|        9 | Red Pepper   | 15             | Vegetable   | Shyamlal Vegetables |
+|       10 | Cabbage      | 10             | Vegetable   | Shyamlal Vegetables |
+|       11 | Garlic       | 10             | Vegetable   | Shyamlal Vegetables |
+|       12 | Coriander    | 5              | Vegetable   | Shyamlal Vegetables |
+|       13 | Green Peas   | 7              | Vegetable   | Shyamlal Vegetables |
+|       14 | Green Pepper | 6              | Vegetable   | Shyamlal Vegetables |
+|       15 | Cinnamon     | 6              | Vegetable   | Shyamlal Vegetables |
+|       16 | Mushrooms    | 3              | Vegetable   | Shyamlal Vegetables |
+|       17 | Chicken      | 25             | Meat        | Royal Meat Shop     |
+|       18 | Mutton       | 20             | Meat        | Royal Meat Shop     |
++----------+--------------+----------------+-------------+---------------------+
+
+
+=====================================================================================================
+
+
+///////////////////////FOR TRIGGER///////////////////////////////
+
+
+ create table Inventory_audit(    
+Stock_Id int(5) NOT NULL,   
+Stock_Name varchar(30) NOT NULL,   
+Quantity varchar(2) NOT NULL,    
+stock_type varchar(100) DEFAULT NULL,    
+Supp_Name varchar(50) NOT NULL
+);
+
+
+update inventory set quantity = '4' where stock_Id =7;
+------------------------------------------------------------
+
+
+
+-----------------------------------------------------------
+
+mysql> desc inventory_audit;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| Stock_Id   | int(5)       | NO   |     | NULL    |       |
+| Stock_Name | varchar(30)  | NO   |     | NULL    |       |
+| Quantity   | varchar(2)   | NO   |     | NULL    |       |
+| stock_type | varchar(100) | YES  |     | NULL    |       |
+| Supp_Name  | varchar(50)  | NO   |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+
+
+-----------------------------------------------------------------------------
+
+=========================================END=========================================================
+
+
+///////////////////////////////////// START PROCEDURE///////////////////////////////////////
+
+----------------------CREATE PROCEDURE FOR DISPLAY MENU-----------------------------------------
+1.
+
+delimiter //
+create procedure display_menu()
+begin
+select menu.menu_id , menu.food_name, menu.price , menu.Type, menu.category from menu ;
+end; //
+delimiter ;
+
+
+--------------------------CALL DISPLAY MENU-----------------------------------------
+
+mysql> call display_menu();
++---------+--------------------+-------+---------+------------+
+| menu_id | food_name          | price | Type    | category   |
++---------+--------------------+-------+---------+------------+
+| M101    | PavBhaji           |    80 | Veg     | MainCourse |
+| M102    | VadaPav            |    15 | Veg     | Snack      |
+| M103    | PaniPuri           |    20 | Veg     | Snack      |
+| M104    | Vegetable Pakora   |    10 | Veg     | Snack      |
+| M105    | Samosa             |    15 | Veg     | Snack      |
+| M106    | Onion Bhaji        |    10 | Veg     | Snack      |
+| M107    | Green Salad        |    30 | Veg     | Starter    |
+| M108    | Papad              |    10 | Veg     | Starter    |
+| M109    | Chutney            |    10 | Veg     | Snack      |
+| M110    | Potato Chat        |    30 | Veg     | Snack      |
+| M111    | Bombay Aloo        |   150 | Veg     | MainCourse |
+| M112    | Paneer Masala      |   150 | Veg     | MainCourse |
+| M113    | Paneer Tikka       |   150 | Veg     | MainCourse |
+| M114    | Palak Panner       |   130 | Veg     | MainCourse |
+| M115    | Kadai Paneer       |   120 | Veg     | MainCourse |
+| M116    | Aloo Gobi          |    80 | Veg     | MainCourse |
+| M117    | Punjabi Chole      |    60 | Veg     | MainCourse |
+| M118    | Dal Tadka          |    80 | Veg     | MainCourse |
+| M119    | Dal Makhani        |    80 | Veg     | MainCourse |
+| M120    | Jeera Rice         |    60 | Veg     | MainCourse |
+| M121    | Veg Biryani        |    80 | Veg     | MainCourse |
+| M122    | Lemon Rice         |    60 | Veg     | MainCourse |
+| M123    | Steamed Rice       |    40 | Veg     | MainCourse |
+| M124    | Chapati            |    10 | Veg     | MainCourse |
+| M125    | Garlic Nan         |    15 | Veg     | MainCourse |
+| M126    | Bhakri             |    10 | Veg     | MainCourse |
+| M127    | Chicken Tikka      |   180 | Non-Veg | MainCourse |
+| M128    | Chicken Curry      |   180 | Non-Veg | MainCourse |
+| M129    | Butter Chicken     |   220 | Non-Veg | MainCourse |
+| M130    | Hyderabadi Biryani |   150 | Non-Veg | MainCourse |
+| M131    | Chicken Handi      |   400 | Non-Veg | MainCourse |
+| M132    | Chicken Chilli     |    90 | Non-Veg | Starter    |
+| M133    | Chicken Lollipop   |   120 | Non-Veg | Starter    |
+| M134    | Chicken Tandoor    |   300 | Non-Veg | Starter    |
+| M135    | Mutton Handi       |   400 | Non-Veg | MainCourse |
+| M136    | Mutton Masala      |   300 | Non-Veg | MainCourse |
+| M137    | Mutton Kolhapuri   |   280 | Non-Veg | MainCourse |
+| M138    | Kaleji Fry         |   250 | Non-Veg | MainCourse |
+| M139    | Mutton Sauji       |   300 | Non-Veg | MainCourse |
+| M140    | Pithal             |    50 | Veg     | MainCourse |
+| M141    | Shev Bhaji         |    70 | Veg     | MainCourse |
+| M142    | Vang Bharit        |    80 | Veg     | MainCourse |
+| M143    | Dal Fry            |   130 | Veg     | MainCourse |
+| M144    | Gulab Jam          |    40 | Veg     | Dessert    |
+| M145    | Ras Gulla          |    50 | Veg     | Dessert    |
+| M146    | Ras Malai          |    70 | Veg     | Dessert    |
+| M147    | Ice-Cream          |    50 | Veg     | Dessert    |
+| M148    | Lassi              |    30 | Veg     | Dessert    |
+| M149    | Dahi               |    30 | Veg     | Dessert    |
+| M150    | Coca-Cola          |    50 | Veg     | Drinks     |
+| M151    | Sprite             |    50 | Veg     | Drinks     |
+| M152    | Mineral Water      |    20 | Veg     | Drinks     |
++---------+--------------------+-------+---------+------------+
+
+
+============================================END (1) PROCEDURE======================================================================
+
+
+---------------------CREATE PROCEDURE FOR DISPLAY MENU BY FOOD NAME-----------------------------------------
+
+2.
+
+delimiter //
+create procedure display_menu_byFoodName(in FoodName varchar (30))
+begin
+select menu.menu_id , menu.food_name, menu.price , menu.Type, menu.category from menu 
+where menu.food_name = FoodName;
+end; //
+delimiter ;
+
+
+---------------------DISPLAY MENU BY FOOD NAME-----------------------------------------
+
+
+mysql> call display_menu_byFoodName('Chicken Chilli');
++---------+----------------+-------+---------+----------+
+| menu_id | food_name      | price | Type    | category |
++---------+----------------+-------+---------+----------+
+| M132    | Chicken Chilli |    90 | Non-Veg | Starter  |
++---------+----------------+-------+---------+----------+
+
+
+=============================================END (2) PROCEDURE====================================================
+
+---------------------CREATE PROCEDURE FOR GET EMPLYOEE BY POST-----------------------------------------
+
+3.
+
+delimiter //
+create procedure getEmployeeByPost(in post varchar(20))
+begin 
+select emp_id , ename , designation, city , contact_no , emp_sal , hiring_date from employee
+where designation = post;
+end ;//
+delimiter ;
+
+
+---------------------DISPLAY  EMPLYOEE BY POST-----------------------------------------
+
+call getEmployeeByPost('Manager');
+
++--------+------------------+-------------+--------+------------+---------+-------------+
+| emp_id | ename            | designation | city   | contact_no | emp_sal | hiring_date |
++--------+------------------+-------------+--------+------------+---------+-------------+
+| E01    | Aniket Darunde   | Manager     | Nagpur | 7755902645 |  150000 | 2018-08-01  |
+| E02    | Bhavesh Bhangale | Manager     | Nagpur | 7775902644 |  150000 | 2018-08-01  |
++--------+------------------+-------------+--------+------------+---------+-------------+
+
+
+mysql> call getEmployeeByPost('Waiter');
++--------+---------------+-------------+--------+------------+---------+-------------+
+| emp_id | ename         | designation | city   | contact_no | emp_sal | hiring_date |
++--------+---------------+-------------+--------+------------+---------+-------------+
+| E05    | Mohit Chavan  | Waiter      | Nagpur | 8943215874 |   15000 | 2018-08-02  |
+| E06    | Rupal Kambale | Waiter      | Nagpur | 7755954874 |   15000 | 2019-03-04  |
+| E07    | Pankaj Mishra | Waiter      | Nagpur | 8945902645 |   10000 | 2020-08-01  |
++--------+---------------+-------------+--------+------------+---------+-------------+
+
+
+===============================================END (3) PROCEDURE==============================================================
+
+
+
+---------------------------CREATE PROCEDURE FOR SHOW CUSTOMER DETAILS BY CITY-----------------------------------------
+
+4.
+
+delimiter //
+create procedure customer_details_bycity(in cityName varchar(20))
+begin
+select  Cname , customer_id , city , Contact , Email_id from customer 
+where city = cityName;
+end ; //
+delimiter ;
+
+
+------------------------------SHOW CUSTOMER DETAILS BY CITY-----------------------------------------
+
+
+call customer_details_bycity('Mumbai');
+
++-----------------+-------------+--------+------------+-----------------------+
+| Cname           | customer_id | city   | Contact    | Email_id              |
++-----------------+-------------+--------+------------+-----------------------+
+| Bimensh Yadav   | C003        | Mumbai | 8648458965 | Byadav45@gmail.com    |
+| Chirag Dave     | C004        | Mumbai | 9878654858 | ChiragDave4@gmail.com |
+| Ankit Sonawane  | C005        | Mumbai | 9564877219 | Ankit123@gmail.com    |
+| Archana mahatre | C011        | Mumbai | 9567664858 | Archana@gmail.com     |
+| Anup Hingmire   | C012        | Mumbai | 8975664858 | Anup@gmail.com        |
+| Chetan Bhuvad   | C014        | Mumbai | 9878541263 | chetanb12@gmail.com   |
++-----------------+-------------+--------+------------+-----------------------+
+
+
+call customer_details_bycity('Nagpur');
+
++-------------+-------------+--------+------------+-----------------+
+| Cname       | customer_id | city   | Contact    | Email_id        |
++-------------+-------------+--------+------------+-----------------+
+| Arati Koche | C008        | Nagpur | 9564764858 | Arati@gmail.com |
++-------------+-------------+--------+------------+-----------------+
+
+
+==============================================END (4) PROCEDURE==========================================================
+
+---------------------CREATE PROCEDURE FOR SHOW BILL BY CUSTOMER NAME-----------------------------------------
+
+5.
+
+delimiter //
+create procedure display_bill_byCname(in customer_name varchar(20))
+begin
+select c.cname,od.order_id,b.Bill_no,b.Amount , b.tax , b.total_amount from customer c
+inner join order_details od
+on c.customer_id = od.customer_id
+inner join bill b
+on b.customer_id=c.customer_id
+where c.cname=customer_name;
+end; //
+delimiter ;
+
+---------------------SHOW BILL BY CUSTOMER NAME-----------------------------------------
+
+
+
+mysql> call display_bill_byCname('Arati Koche');
++-------------+----------+---------+--------+------+--------------+
+| cname       | order_id | Bill_no | Amount | tax  | total_amount |
++-------------+----------+---------+--------+------+--------------+
+| Arati Koche |        8 |     108 |    300 |   15 |          315 |
++-------------+----------+---------+--------+------+--------------+
+
+
+=============================================END (5) PROCEDURE========================================================================
+
+
+
+
+---------------------CREATE PROCEDURE FOR SHOW MENU BY TYPE(VEG OR NON-VEG)-----------------------------------------
+
+6.
+
+delimiter //
+create procedure display_menu_byType(in Veg$Non_Veg varchar(8))
+begin
+select menu.menu_id , menu.food_name, menu.price , menu.Type, menu.category from menu 
+where menu.Type=Veg$Non_veg;
+end; //
+delimiter ;
+
+
+---------------------SHOW MENU BY TYPE(VEG OR NON-VEG)--------------------------------------------------------------------
+
+
+call display_menu_byType('Veg');
+
+
++---------+------------------+-------+------+------------+
+| menu_id | food_name        | price | Type | category   |
++---------+------------------+-------+------+------------+
+| M101    | PavBhaji         |    80 | Veg  | MainCourse |
+| M102    | VadaPav          |    15 | Veg  | Snack      |
+| M103    | PaniPuri         |    20 | Veg  | Snack      |
+| M104    | Vegetable Pakora |    10 | Veg  | Snack      |
+| M105    | Samosa           |    15 | Veg  | Snack      |
+| M106    | Onion Bhaji      |    10 | Veg  | Snack      |
+| M107    | Green Salad      |    30 | Veg  | Starter    |
+| M108    | Papad            |    10 | Veg  | Starter    |
+| M109    | Chutney          |    10 | Veg  | Snack      |
+| M110    | Potato Chat      |    30 | Veg  | Snack      |
+| M111    | Bombay Aloo      |   150 | Veg  | MainCourse |
+| M112    | Paneer Masala    |   150 | Veg  | MainCourse |
+| M113    | Paneer Tikka     |   150 | Veg  | MainCourse |
+| M114    | Palak Panner     |   130 | Veg  | MainCourse |
+| M115    | Kadai Paneer     |   120 | Veg  | MainCourse |
+| M116    | Aloo Gobi        |    80 | Veg  | MainCourse |
+| M117    | Punjabi Chole    |    60 | Veg  | MainCourse |
+| M118    | Dal Tadka        |    80 | Veg  | MainCourse |
+| M119    | Dal Makhani      |    80 | Veg  | MainCourse |
+| M120    | Jeera Rice       |    60 | Veg  | MainCourse |
+| M121    | Veg Biryani      |    80 | Veg  | MainCourse |
+| M122    | Lemon Rice       |    60 | Veg  | MainCourse |
+| M123    | Steamed Rice     |    40 | Veg  | MainCourse |
+| M124    | Chapati          |    10 | Veg  | MainCourse |
+| M125    | Garlic Nan       |    15 | Veg  | MainCourse |
+| M126    | Bhakri           |    10 | Veg  | MainCourse |
+| M140    | Pithal           |    50 | Veg  | MainCourse |
+| M141    | Shev Bhaji       |    70 | Veg  | MainCourse |
+| M142    | Vang Bharit      |    80 | Veg  | MainCourse |
+| M143    | Dal Fry          |   130 | Veg  | MainCourse |
+| M144    | Gulab Jam        |    40 | Veg  | Dessert    |
+| M145    | Ras Gulla        |    50 | Veg  | Dessert    |
+| M146    | Ras Malai        |    70 | Veg  | Dessert    |
+| M147    | Ice-Cream        |    50 | Veg  | Dessert    |
+| M148    | Lassi            |    30 | Veg  | Dessert    |
+| M149    | Dahi             |    30 | Veg  | Dessert    |
+| M150    | Coca-Cola        |    50 | Veg  | Drinks     |
+| M151    | Sprite           |    50 | Veg  | Drinks     |
+| M152    | Mineral Water    |    20 | Veg  | Drinks     |
++---------+------------------+-------+------+------------+
+
+
+
+call display_menu_byType('Non-Veg');
+
+
++---------+--------------------+-------+---------+------------+
+| menu_id | food_name          | price | Type    | category   |
++---------+--------------------+-------+---------+------------+
+| M127    | Chicken Tikka      |   180 | Non-Veg | MainCourse |
+| M128    | Chicken Curry      |   180 | Non-Veg | MainCourse |
+| M129    | Butter Chicken     |   220 | Non-Veg | MainCourse |
+| M130    | Hyderabadi Biryani |   150 | Non-Veg | MainCourse |
+| M131    | Chicken Handi      |   400 | Non-Veg | MainCourse |
+| M132    | Chicken Chilli     |    90 | Non-Veg | Starter    |
+| M133    | Chicken Lollipop   |   120 | Non-Veg | Starter    |
+| M134    | Chicken Tandoor    |   300 | Non-Veg | Starter    |
+| M135    | Mutton Handi       |   400 | Non-Veg | MainCourse |
+| M136    | Mutton Masala      |   300 | Non-Veg | MainCourse |
+| M137    | Mutton Kolhapuri   |   280 | Non-Veg | MainCourse |
+| M138    | Kaleji Fry         |   250 | Non-Veg | MainCourse |
+| M139    | Mutton Sauji       |   300 | Non-Veg | MainCourse |
++---------+--------------------+-------+---------+------------+
+
+
+================================================END (6) PROCEDURE============================================================================
+
+
+-----------------------CREATE PROCEDURE FOR SHOW MENU BY CATEGORY-----------------------------------------------------------
+
+7.
+
+
+delimiter //
+create procedure display_menu_byCategory(in Category_ varchar(40))
+begin
+select menu.menu_id , menu.food_name, menu.price , menu.Type, menu.category from menu 
+where menu.category=Category_;
+end; //
+delimiter ;
+
+
+---------------------SHOW MENU BY CATEGORY---------------------------------------
+
+
+mysql> call  display_menu_byCategory('Starter');
++---------+------------------+-------+---------+----------+
+| menu_id | food_name        | price | Type    | category |
++---------+------------------+-------+---------+----------+
+| M107    | Green Salad      |    30 | Veg     | Starter  |
+| M108    | Papad            |    10 | Veg     | Starter  |
+| M132    | Chicken Chilli   |    90 | Non-Veg | Starter  |
+| M133    | Chicken Lollipop |   120 | Non-Veg | Starter  |
+| M134    | Chicken Tandoor  |   300 | Non-Veg | Starter  |
++---------+------------------+-------+---------+----------+
+
+----------------------------------------------------------------------------------
+
+
+mysql> call  display_menu_byCategory('Snack');
++---------+------------------+-------+------+----------+
+| menu_id | food_name        | price | Type | category |
++---------+------------------+-------+------+----------+
+| M102    | VadaPav          |    15 | Veg  | Snack    |
+| M103    | PaniPuri         |    20 | Veg  | Snack    |
+| M104    | Vegetable Pakora |    10 | Veg  | Snack    |
+| M105    | Samosa           |    15 | Veg  | Snack    |
+| M106    | Onion Bhaji      |    10 | Veg  | Snack    |
+| M109    | Chutney          |    10 | Veg  | Snack    |
+| M110    | Potato Chat      |    30 | Veg  | Snack    |
++---------+------------------+-------+------+----------+
+
+
+----------------------------------------------------------------------------------
+
+
+
+mysql> call  display_menu_byCategory('Dessert');
++---------+-----------+-------+------+----------+
+| menu_id | food_name | price | Type | category |
++---------+-----------+-------+------+----------+
+| M144    | Gulab Jam |    40 | Veg  | Dessert  |
+| M145    | Ras Gulla |    50 | Veg  | Dessert  |
+| M146    | Ras Malai |    70 | Veg  | Dessert  |
+| M147    | Ice-Cream |    50 | Veg  | Dessert  |
+| M148    | Lassi     |    30 | Veg  | Dessert  |
+| M149    | Dahi      |    30 | Veg  | Dessert  |
++---------+-----------+-------+------+----------+
+
+
+--------------------------------------------------------------------------------------------------
+
+
+
+mysql> call  display_menu_byCategory('MainCourse');
++---------+--------------------+-------+---------+------------+
+| menu_id | food_name          | price | Type    | category   |
++---------+--------------------+-------+---------+------------+
+| M101    | PavBhaji           |    80 | Veg     | MainCourse |
+| M111    | Bombay Aloo        |   150 | Veg     | MainCourse |
+| M112    | Paneer Masala      |   150 | Veg     | MainCourse |
+| M113    | Paneer Tikka       |   150 | Veg     | MainCourse |
+| M114    | Palak Panner       |   130 | Veg     | MainCourse |
+| M115    | Kadai Paneer       |   120 | Veg     | MainCourse |
+| M116    | Aloo Gobi          |    80 | Veg     | MainCourse |
+| M117    | Punjabi Chole      |    60 | Veg     | MainCourse |
+| M118    | Dal Tadka          |    80 | Veg     | MainCourse |
+| M119    | Dal Makhani        |    80 | Veg     | MainCourse |
+| M120    | Jeera Rice         |    60 | Veg     | MainCourse |
+| M121    | Veg Biryani        |    80 | Veg     | MainCourse |
+| M122    | Lemon Rice         |    60 | Veg     | MainCourse |
+| M123    | Steamed Rice       |    40 | Veg     | MainCourse |
+| M124    | Chapati            |    10 | Veg     | MainCourse |
+| M125    | Garlic Nan         |    15 | Veg     | MainCourse |
+| M126    | Bhakri             |    10 | Veg     | MainCourse |
+| M127    | Chicken Tikka      |   180 | Non-Veg | MainCourse |
+| M128    | Chicken Curry      |   180 | Non-Veg | MainCourse |
+| M129    | Butter Chicken     |   220 | Non-Veg | MainCourse |
+| M130    | Hyderabadi Biryani |   150 | Non-Veg | MainCourse |
+| M131    | Chicken Handi      |   400 | Non-Veg | MainCourse |
+| M135    | Mutton Handi       |   400 | Non-Veg | MainCourse |
+| M136    | Mutton Masala      |   300 | Non-Veg | MainCourse |
+| M137    | Mutton Kolhapuri   |   280 | Non-Veg | MainCourse |
+| M138    | Kaleji Fry         |   250 | Non-Veg | MainCourse |
+| M139    | Mutton Sauji       |   300 | Non-Veg | MainCourse |
+| M140    | Pithal             |    50 | Veg     | MainCourse |
+| M141    | Shev Bhaji         |    70 | Veg     | MainCourse |
+| M142    | Vang Bharit        |    80 | Veg     | MainCourse |
+| M143    | Dal Fry            |   130 | Veg     | MainCourse |
++---------+--------------------+-------+---------+------------+
+
+
+
+==========================================END (7) PROCEDURE===============================================================
+
+
+---------------------CREATE PROCEDURE FOR SHOW CUSTOMER DETAILS BY DATE---------------------------------------
+
+8.
+
+delimiter //
+create procedure order_by_date(in OrderDate date)
+begin 
+select cname , od.order_id ,od.order_date, food_name , b.Total_amount from customer c 
+inner join order_details od 
+on c.customer_id=od.customer_id
+inner join order_items oi
+on oi.order_id = od.order_id
+inner join bill b
+on c.customer_id = b.customer_id
+where od.order_date=OrderDate
+group by od.order_id;
+end ; //
+delimiter ;
+
+
+--------------------------------SHOW CUSTOMER DETAILS BY DATE---------------------------------------
+
+
+mysql> call order_by_date('2020-12-23');
++------------------+----------+------------+--------------+--------------+
+| cname            | order_id | order_date | food_name    | Total_amount |
++------------------+----------+------------+--------------+--------------+
+| Ashwini Jadhav   |        1 | 2020-12-23 | Samosa       |           32 |
+| Atul Suryavanshi |        2 | 2020-12-23 | Bombay Aloo  |          315 |
+| Bimensh Yadav    |        3 | 2020-12-23 | Kadai Paneer |          126 |
++------------------+----------+------------+--------------+--------------+
+
+
+-------------------------------------------------------------------------------
+
+mysql> call order_by_date('2021-01-01');
++-----------------+----------+------------+-------------+--------------+
+| cname           | order_id | order_date | food_name   | Total_amount |
++-----------------+----------+------------+-------------+--------------+
+| Archana mahatre |       11 | 2021-01-01 | Vadapav     |           32 |
+| Anup Hingmire   |       12 | 2021-01-01 | Green Salad |           65 |
++-----------------+----------+------------+-------------+--------------+
+
+
+=============================================END (8) PROCEDURE=========================================================================
+
+
+
+-------------------------------CREATE PROCEDURE FOR SHOW PAYMENT BY PAYMENT MODE---------------------------------------
+
+9. 
+
+delimiter //
+create procedure payment_by_mode(in PaymentMode varchar(10))
+begin
+select payment_id , b.bill_no , cname , payment_mode , p.paid_amount from payment p
+inner join bill b
+on b.bill_no=p.bill_no
+inner join customer c
+on b.customer_id= c.customer_id
+where p.payment_mode =PaymentMode;
+end ; //
+delimiter ;
+
+
+-------------------------------SHOW PAYMENT BY PAYMENT MODE--------------------------------------------------------
+
+
+
+mysql> call payment_by_mode('CASH');
++------------+---------+-----------------+--------------+-------------+
+| payment_id | bill_no | cname           | payment_mode | paid_amount |
++------------+---------+-----------------+--------------+-------------+
+|         11 |     101 | Ashwini Jadhav  | CASH         |          32 |
+|         15 |     105 | Ankit Sonawane  | CASH         |          65 |
+|         16 |     106 | Ankeeta Pol     | CASH         |         168 |
+|         19 |     109 | Anuja Padwal    | CASH         |         315 |
+|         20 |     110 | Anjali Deshmukh | CASH         |         126 |
+|         23 |     113 | Chhaya Munji    | CASH         |         168 |
++------------+---------+-----------------+--------------+-------------+
+
+--------------------------------------------------------------------------------------
+
+mysql> call payment_by_mode('CARD');
++------------+---------+---------------+--------------+-------------+
+| payment_id | bill_no | cname         | payment_mode | paid_amount |
++------------+---------+---------------+--------------+-------------+
+|         14 |     104 | Chirag Dave   | CARD         |          32 |
+|         18 |     108 | Arati Koche   | CARD         |         315 |
+|         24 |     114 | Chetan Bhuvad | CARD         |          96 |
++------------+---------+---------------+--------------+-------------+
+
+------------------------------------------------------------------------------------
+
+
+mysql> call payment_by_mode('UPI');
++------------+---------+----------------------+--------------+-------------+
+| payment_id | bill_no | cname                | payment_mode | paid_amount |
++------------+---------+----------------------+--------------+-------------+
+|         12 |     102 | Atul Suryavanshi     | UPI          |         315 |
+|         13 |     103 | Bimensh Yadav        | UPI          |         126 |
+|         17 |     107 | Anirudhha kingaonkar | UPI          |         282 |
+|         21 |     111 | Archana mahatre      | UPI          |          32 |
+|         22 |     112 | Anup Hingmire        | UPI          |          65 |
++------------+---------+----------------------+--------------+-------------+
+
+
+
+
+======================================================END (9) PROCEDURE===================================================================
+
+
+/////////////////////////////////////////START TRIGGER///////////////////////////////////////////
+
+1.
+Trigger to insert order to supplier if quantity of stock is less than 5
+delimiter //
+create trigger new_Stock_orders
+after update on inventory
+for each row
+begin
+if new.quantity < 5 
+then 
+insert into stock_order values (new.stock_id , sysdate() , 10);
+end if;
+end; //
+delimiter ;
+------------------------------------------
+update inventory set quantity = 3
+where stock_id = 8;
+select * from stock_order;
+
+----------------------------------------------------
+
+
+
+======================================================END (1) TRIGGER==================================================================
+
+2.
+-- Trigger to insert the employee in table by verifying age
+delimiter //
+create trigger Hire_Employee_age_verify
+before insert on employee
+for each row
+begin
+declare msg varchar(200);
+set msg = concat('The age of employee is ',new.age,'. Age should be in between 18 and 60.');
+IF (new.age < 18 or new.age > 60 )then
+signal sqlstate '45000'
+	set message_text = msg;
+end if;
+end; //
+delimiter ;
+
+------------------------------------------------------
+
+insert into employee(emp_id,Ename,age,Designation, Address, City ,State , Pincode, Contact_no , Emp_sal , hiring_date)
+values
+('E10','Mohit Dhake',80,'Waiter','Ravindra Nagar','Nagpur','Maharashtra','442102','8648652545',10000,'2020-07-09');
+
+
+select * from employee;
+
+=====================================================END(2) TRIGGER======================================
+
+
+3.
+ --To show whenever stock is update, quantity is less than 5 or not 
+
+ --Trigger to check in inventory of updated stock is fullfiled or not
+
+ DELIMITER //
+mysql> create trigger quantity_update_stock
+    -> after update on inventory
+    -> for each row
+    -> begin
+    -> declare inserted_stockid int(5);
+    -> declare inserted_stockname varchar(30);
+    -> declare inserted_quantity varchar(2);
+    -> declare inserted_stocktype varchar(100);
+    -> declare inserted_suppname varchar(50);
+    -> set inserted_stockid = new.Stock_Id;
+    -> set inserted_stockname = new.Stock_Name;
+    -> set inserted_quantity = new.Quantity;
+    -> set inserted_stocktype = new.stock_type;
+    -> set inserted_suppname = new.Supp_Name;
+    -> if inserted_quantity < 5
+    -> then signal SQLSTATE '45000' set message_text = 'Stock is less and call to supplier';
+    -> else insert into Inventory_audit values(inserted_stockid,inserted_stockname,inserted_quantity,inserted_stocktype,inserted_suppname);
+    -> END if;
+    -> end //
+mysql> delimiter ;
+
+
+---------------------------------------------------------------------------------------------
+
+mysql> update inventory set quantity = '4' where stock_Id =7;
+
+
+ERROR 1644 (45000): Stock is less and call to supplier
+
+---------------------------------------
+
+mysql> update inventory set quantity = '24' where stock_Id =7;
+
+mysql> select * from inventory_audit;
+
+
+mysql> select * from inventory_audit;
++----------+------------+----------+------------+---------------------+
+| Stock_Id | Stock_Name | Quantity | stock_type | Supp_Name           |
++----------+------------+----------+------------+---------------------+
+|        7 | Onion      | 24       | Vegetable  | Shyamlal Vegetables |
++----------+------------+----------+------------+---------------------+
+
+
+
+=========================================================END (3) TRIGGER=========================================
+
+
+4. 
+--To show details of left_employee
+
+-- tigger for left_employee
+
+
+DELIMITER //
+create trigger employee_left
+     after delete on Employee
+	for each row
+	begin
+	declare delete_emp_id varchar(8);
+    declare delete_ename varchar(20);
+    declare delete_age int(11);
+    declare delete_designation varchar(10);
+    declare delete_address varchar(30);
+    declare delete_city varchar(15);
+    declare delete_state varchar(15);
+    declare delete_pincode varchar(10);
+    declare delete_contact_no varchar(13);
+    declare delete_emp_sal float;
+    declare delete_hiring_date date;
+    set delete_emp_id = old.emp_id;
+    set delete_ename = old.Ename;
+    set delete_age =old.Age;
+    set delete_designation = old.designation;
+    set delete_address = old.Address;
+    set delete_city = old.City;
+    set delete_state = old.State;
+    set delete_pincode = old.Pincode;
+    set delete_contact_no = old.Contact_no;
+    set delete_emp_sal = old.Emp_sal;
+    set delete_hiring_date = old.hiring_date;
+    
+    insert into Employee_Left values(delete_emp_id,delete_ename,delete_age,delete_designation,delete_address,delete_city,delete_state,delete_pincode,delete_contact_no,delete_emp_sal,delete_hiring_date,sysdate());
+	end //
+    DELIMITER ;
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+---BEFORE DELETE ROW FROM EMPLOYEE-----------------
+
+mysql> select * from employee;
++--------+------------------+-----+-------------+---------------+--------+-------------+---------+------------+---------+-------------+
+| emp_id | Ename            | Age | Designation | Address       | City   | State       | Pincode | Contact_no | Emp_sal | hiring_date |
++--------+------------------+-----+-------------+---------------+--------+-------------+---------+------------+---------+-------------+
+| E01    | Aniket Darunde   |  25 | Manager     | JaiBhim Nagar | Nagpur | Maharashtra | 440027  | 7755902645 |  150000 | 2018-08-01  |
+| E02    | Bhavesh Bhangale |  21 | Manager     | Hanuman Nagar | Nagpur | Maharashtra | 440027  | 7775902644 |  150000 | 2018-08-01  |
+| E03    | Sanklap Bhale    |  45 | Chef        | Uttam Nagar   | Nagpur | Maharashtra | 440029  | 8989457685 |   25000 | 2018-08-01  |
+| E04    | Vinod Bhalerao   |  35 | Chef        | Bajaj Nagar   | Nagpur | Maharashtra | 440030  | 8926457841 |   20000 | 2019-02-20  |
+| E05    | Mohit Chavan     |  19 | Waiter      | Laxmi Nagar   | Nagpur | Maharashtra | 440027  | 8943215874 |   15000 | 2018-08-02  |
+| E06    | Rupal Kambale    |  23 | Waiter      | Shanti Nagar  | Nagpur | Maharashtra | 440027  | 7755954874 |   15000 | 2019-03-04  |
+| E07    | Pankaj Mishra    |  25 | Waiter      | Pratap Nagar  | Nagpur | Maharashtra | 440028  | 8945902645 |   10000 | 2020-08-01  |
+| E08    | Akash Pande      |  27 | Cleaner     | Umaan Nagar   | Nagpur | Maharashtra | 440026  | 9954402645 |    8000 | 2018-08-03  |
++--------+------------------+-----+-------------+---------------+--------+-------------+---------+------------+---------+-------------+
+
+----------------------------------------------------------------------------------------------------------
+
+-----DELETE ROW FROM EMPLOYEE---------------- 
+
+delete from employee where emp_id = 'E08';
+
+----------------------------------
+
+-------AFTER DELETE ROW FROM EMPLOYEE----------
+
+
+mysql> select * from employee;
++--------+------------------+-----+-------------+---------------+--------+-------------+---------+------------+---------+-------------+
+| emp_id | Ename            | Age | Designation | Address       | City   | State       | Pincode | Contact_no | Emp_sal | hiring_date |
++--------+------------------+-----+-------------+---------------+--------+-------------+---------+------------+---------+-------------+
+| E01    | Aniket Darunde   |  25 | Manager     | JaiBhim Nagar | Nagpur | Maharashtra | 440027  | 7755902645 |  150000 | 2018-08-01  |
+| E02    | Bhavesh Bhangale |  21 | Manager     | Hanuman Nagar | Nagpur | Maharashtra | 440027  | 7775902644 |  150000 | 2018-08-01  |
+| E03    | Sanklap Bhale    |  45 | Chef        | Uttam Nagar   | Nagpur | Maharashtra | 440029  | 8989457685 |   25000 | 2018-08-01  |
+| E04    | Vinod Bhalerao   |  35 | Chef        | Bajaj Nagar   | Nagpur | Maharashtra | 440030  | 8926457841 |   20000 | 2019-02-20  |
+| E05    | Mohit Chavan     |  19 | Waiter      | Laxmi Nagar   | Nagpur | Maharashtra | 440027  | 8943215874 |   15000 | 2018-08-02  |
+| E06    | Rupal Kambale    |  23 | Waiter      | Shanti Nagar  | Nagpur | Maharashtra | 440027  | 7755954874 |   15000 | 2019-03-04  |
+| E07    | Pankaj Mishra    |  25 | Waiter      | Pratap Nagar  | Nagpur | Maharashtra | 440028  | 8945902645 |   10000 | 2020-08-01  |
++--------+------------------+-----+-------------+---------------+--------+-------------+---------+------------+---------+-------------+
+
+-------------------------------------------------------------------------------------------------------------
+
+
+mysql> select * from employee_left;
++--------+-------------+-----+-------------+-------------+--------+-------------+---------+------------+---------+-------------+------------+
+| emp_id | Ename       | Age | Designation | Address     | City   | State       | Pincode | Contact_no | Emp_sal | hiring_date | left_date  |
++--------+-------------+-----+-------------+-------------+--------+-------------+---------+------------+---------+-------------+------------+
+| E08    | Akash Pande |  27 | Cleaner     | Umaan Nagar | Nagpur | Maharashtra | 440026  | 9954402645 |    8000 | 2018-08-03  | 2021-07-02 |
++--------+-------------+-----+-------------+-------------+--------+-------------+---------+------------+---------+-------------+------------+
+
+
+
+
+===================================================================END(4) TRIGGER=======================================================
+
+
+////////////////////////////////////START CURSOR///////////////////////////////////////////
+
+1. 
+-- CURSOR FOR SELECT ENAME AND SALARY
+
+ delimiter //
+    create procedure proc_emp()
+    begin
+    declare v_Ename varchar(50);
+    declare v_Emp_sal varchar(15);
+    declare v_finished integer default 0;
+    declare c1 cursor for select Ename , Emp_sal from employee;
+    declare continue handler for not found set v_finished =1;
+    open c1;
+    get_emp: LOOP
+    fetch c1 into v_Ename , v_Emp_sal;
+    if v_finished = 1 then
+    leave get_emp;
+    end if;
+    select v_Ename,v_Emp_sal;
+    END LOOP get_emp;
+    close c1;
+    end //
+    delimiter ;
+----------------------------------------------------------------------
+    
+    select Ename,Emp_sal from employee;
+-------------------------------------------    
+  --CALL CURSOR proc_emp  
+
+call proc_emp();
+
+--------------------------------------------------------------------
+
+
+mysql> call proc_emp();
++----------------+-----------+
+| v_Ename        | v_Emp_sal |
++----------------+-----------+
+| Aniket Darunde | 150000    |
++----------------+-----------+
+1 row in set (0.00 sec)
+
++------------------+-----------+
+| v_Ename          | v_Emp_sal |
++------------------+-----------+
+| Bhavesh Bhangale | 150000    |
++------------------+-----------+
+1 row in set (0.01 sec)
+
++---------------+-----------+
+| v_Ename       | v_Emp_sal |
++---------------+-----------+
+| Sanklap Bhale | 25000     |
++---------------+-----------+
+1 row in set (0.01 sec)
+
++----------------+-----------+
+| v_Ename        | v_Emp_sal |
++----------------+-----------+
+| Vinod Bhalerao | 20000     |
++----------------+-----------+
+1 row in set (0.01 sec)
+
++--------------+-----------+
+| v_Ename      | v_Emp_sal |
++--------------+-----------+
+| Mohit Chavan | 15000     |
++--------------+-----------+
+1 row in set (0.01 sec)
+
++---------------+-----------+
+| v_Ename       | v_Emp_sal |
++---------------+-----------+
+| Rupal Kambale | 15000     |
++---------------+-----------+
+1 row in set (0.01 sec)
+
++---------------+-----------+
+| v_Ename       | v_Emp_sal |
++---------------+-----------+
+| Pankaj Mishra | 10000     |
++---------------+-----------+
+1 row in set (0.01 sec)
+
+
+===========================================================================END (1) CURSOR==========================================
+
+
+2.
+-- CURSOR FOR UPDATE SALARY OF EMPLOYEES BASED ON DESIGNATION
+
+----------------------------------------
+CREATE ---
+--------------
+
+delimiter //
+ create procedure update_salary_based_designation()
+ begin
+ declare v_designation varchar(10);
+ declare v_emp_id varchar(8);
+ declare v_finished integer default 0;
+ declare c1 cursor for select emp_id , designation from employee;
+ declare continue handler for not found set v_finished=1;
+ open c1;
+ get_emp : LOOP
+ fetch c1 into v_emp_id , v_designation;
+ if v_finished =1 then
+ leave get_emp;
+ end if;
+ if v_designation = 'Manager' then
+ update employee set Emp_sal = Emp_sal + 10000 where  emp_id= v_emp_id;
+ end if;
+ if v_designation = 'Chef' then
+  update employee set Emp_sal = Emp_sal + 6000 where  emp_id= v_emp_id;
+    end if;
+    if v_designation = 'Waiter' then
+  update employee set Emp_sal = Emp_sal + 4000 where  emp_id= v_emp_id;
+    end if;
+    if v_designation = 'Cleaner' then
+  update employee set Emp_sal = Emp_sal + 3000 where  emp_id= v_emp_id;
+    end if;
+    END LOOP get_emp;
+    close c1;
+    end //
+    delimiter ;
+
+--------------------------------------------------------------------------------------------
+
+
+--BEFORE CALL PROCEDURE CURSOR
+
+-----------------------------------------
+
+mysql> select Emp_id, designation, Emp_sal from employee;
++--------+-------------+---------+
+| Emp_id | designation | Emp_sal |
++--------+-------------+---------+
+| E01    | Manager     |  150000 |
+| E02    | Manager     |  150000 |
+| E03    | Chef        |   25000 |
+| E04    | Chef        |   20000 |
+| E05    | Waiter      |   15000 |
+| E06    | Waiter      |   15000 |
+| E07    | Waiter      |   10000 |
++--------+-------------+---------+
+-----------------------------------------------------------------------
+
+CALLING PROCEDURE CURSOR
+----------------------------------------
+
+call update_salary_based_designation();
+
+-----------------------------------------------------------
+
+---AFTER CALLING PROCEDURE CURSOR UPDATED SALARY-----
+
+mysql> select Emp_id, designation, Emp_sal from employee;
++--------+-------------+---------+
+| Emp_id | designation | Emp_sal |
++--------+-------------+---------+
+| E01    | Manager     |  160000 |
+| E02    | Manager     |  160000 |
+| E03    | Chef        |   31000 |
+| E04    | Chef        |   26000 |
+| E05    | Waiter      |   19000 |
+| E06    | Waiter      |   19000 |
+| E07    | Waiter      |   14000 |
++--------+-------------+---------+
+
+
+
+===================================================END (2) CURSOR====================================================
+
+
+3.
+--CURSOR TO UPDATE THE PRICE OF MENU DESHES
+
+
+delimiter //
+    create procedure proc_menu(in Food varchar(20) , in Prc_increase int)
+    begin
+    declare v_Dish varchar(20);
+    declare v_Menu_id varchar(8);
+    declare v_Food_name varchar(20);
+    declare v_Price int;
+    declare v_finished integer default 0;
+    declare c1 cursor for select Menu_id,Food_name, Price from Menu;
+    declare continue handler for not found set v_finished =1;
+    open c1;
+    get_menu: LOOP
+    fetch c1 into v_Menu_id,v_Food_name,v_price;
+    if v_finished = 1 then
+    leave get_menu;
+    end if;
+    if v_Food_name = Food then 
+    update menu set price = price + prc_increase
+    where v_food_name = Food;
+    end if;
+    end loop get_menu;
+    close c1;
+    end; //
+    delimiter ;
+  
+------------------------------------------------------------------------------------------
+  
+CALLING PROCEDURE CURSOR
+-------------------------
+    call proc_menu('Samosa',-5);
+
+-------------------------------------------------------------------------------------
+   SHOW UPDATED BY CURSOR
+----------------------------
+    select * from menu
+    where Food_name='Samosa';
+----------------------------------------------
+      
++---------+-----------+-------+-----------+------+----------+
+| menu_id | food_name | price | prep_time | type | category |
++---------+-----------+-------+-----------+------+----------+
+| M105    | Samosa    |    10 | 00:00:10  | Veg  | Snack    |
++---------+-----------+-------+-----------+------+----------+
+
+
+=======================================END (3) CURSOR =========================================
+
+
+4.
+--CURSOR FOR UPDATE SALARY BY PARAMETER OF POST AND HOW SALARY INCREMENT
+
+delimiter //
+ create procedure update_salary_by_Post(in post varchar(20),in sal_incr float )
+ begin
+ declare v_designation varchar(10);
+ declare v_emp_id varchar(8);
+ declare v_emp_sal float;
+ declare v_finished integer default 0;
+ declare c1 cursor for select emp_id , emp_sal, designation from employee;
+ declare continue handler for not found set v_finished=1;
+ open c1;
+ get_emp : LOOP
+ fetch c1 into v_emp_id ,v_emp_sal, v_designation;
+ if v_finished =1 then
+ leave get_emp;
+ end if;
+ if v_designation = post then
+ update employee set Emp_sal = Emp_sal + sal_incr where  emp_id= v_emp_id;
+ end if;
+    END LOOP get_emp;
+    close c1;
+    end //
+    delimiter ;
+
+-----------------------------------------------------------------
+
+BEFORE CALL UPDATE_SALARY_BY_POST
+
+-------------------------------------
+
+ select ename , Designation, emp_sal from employee
+ where designation = 'Chef';
+
++----------------+-------------+---------+
+| ename          | Designation | emp_sal |
++----------------+-------------+---------+
+| Sanklap Bhale  | Chef        |   31000 |
+| Vinod Bhalerao | Chef        |   26000 |
++----------------+-------------+---------+
+
+----------------------------------------------------------------
+ CALL CURSOR PROCEDURE
+
+    call  update_salary_by_Post('Chef',1000);
+
+-----------------------------------------------
+
+AFTER CALL CURSOR PROCEDURE
+----------------------
+
+select ename , Designation, emp_sal from employee where designation = 'Chef';
++----------------+-------------+---------+
+| ename          | Designation | emp_sal |
++----------------+-------------+---------+
+| Sanklap Bhale  | Chef        |   32000 |
+| Vinod Bhalerao | Chef        |   27000 |
++----------------+-------------+---------+
+
+
+=========================================================END (4)CURSOR==============================
+
+5.
+
+CURSOR TO UPDATE THE SALARY OF EMPLOYEES BY THIER NAME
+---------------------
+ 
+ delimiter //
+ create procedure update_salary_by_EmpName(in EmpName varchar(20),in sal_incr float )
+ begin
+ declare v_ename varchar (25);
+ declare v_emp_id varchar(8);
+ declare v_emp_sal float;
+ declare v_finished integer default 0;
+ declare c1 cursor for select emp_id,ename, emp_sal from employee;
+ declare continue handler for not found set v_finished=1;
+ open c1;
+ get_emp : LOOP
+ fetch c1 into v_emp_id , v_ename,v_emp_sal;
+ if v_finished =1 then
+ leave get_emp;
+ end if;
+ if v_ename = EmpName then
+ update employee set Emp_sal = Emp_sal + sal_incr where  emp_id= v_emp_id;
+ end if;
+    END LOOP get_emp;
+    close c1;
+    end //
+    delimiter ;
+----------------------------------------------------------------------------------
+
+BEFORE UPDATE OR BEFORE CALL CURSOR PROCEDURE
+-------------------------------
+ 
+select emp_id ,ename , Designation, emp_sal from employee
+where ename = 'Aniket Darunde';
+
++--------+----------------+-------------+---------+
+| emp_id | ename          | Designation | emp_sal |
++--------+----------------+-------------+---------+
+| E01    | Aniket Darunde | Manager     |  160000 |
++--------+----------------+-------------+---------+
+
+------------------------------------------------------------------------------------
+    
+CALL CURSOR PROCEDURE
+
+---------------------
+
+    call update_salary_by_EmpName('Aniket Darunde',5000);
+
+
+------------------------------------------------
+
+
+ AFTER CALL CURSOR PROCEDURE
+------------------------------
+
+mysql> select emp_id ,ename , Designation, emp_sal from employee
+    -> where ename = 'Aniket Darunde';
++--------+----------------+-------------+---------+
+| emp_id | ename          | Designation | emp_sal |
++--------+----------------+-------------+---------+
+| E01    | Aniket Darunde | Manager     |  170000 |
++--------+----------------+-------------+---------+
+
+======================================================END (5) CURSOR==========================================
+
+
+
+============================================================================================================================
+
+//////////////////////////////////////START NORMAL QUIREIS////////////////////////////////////////////////////
+
+
+///////////////////////////JOINS//////////////////////////////////////
+
+
+1. INNER JOIN 
+
+TABLE JOIN :- INNER JOIN CUSTOMER TO ORDER DETAILS 
+
+-- To display the orders by date 
+select c.cname ,oi.food_name, od.order_date from customer c 
+inner join order_details od
+on c.customer_id=od.customer_id
+inner join order_items oi
+on od.order_id=oi.order_id
+where od.order_date = '2020-12-23';
+
+
++------------------+--------------+------------+
+| cname            | food_name    | order_date |
++------------------+--------------+------------+
+| Ashwini Jadhav   | Samosa       | 2020-12-23 |
+| Atul Suryavanshi | Bombay Aloo  | 2020-12-23 |
+| Bimensh Yadav    | Kadai Paneer | 2020-12-23 |
++------------------+--------------+------------+
+
+
+-----------------------------------------------------------------------------
+
+=====================================================================================
+
+
+2. LEFT JOIN 
+
+TABLES JOIN :-  LEFT JOIN ORDER_DETAILS WITH BILL
+
+ select * from order_details left join bill on order_details.customer_id = bill.customer_id;
+
++-------------+------------+----------+----------+---------+--------+------+--------------+-------------+----------+----------+
+| Customer_Id | Order_date | Order_id | Table_id | Bill_No | Amount | Tax  | Total_Amount | Customer_id | Order_id | Table_id |
++-------------+------------+----------+----------+---------+--------+------+--------------+-------------+----------+----------+
+| C001        | 2020-12-23 |        1 | T03      |     101 |     30 |    2 |           32 | C001        |        1 | T03      |
+| C002        | 2020-12-23 |        2 | T01      |     102 |    300 |   25 |          315 | C002        |        2 | T01      |
+| C003        | 2020-12-23 |        3 | T02      |     103 |    120 |    6 |          126 | C003        |        3 | T02      |
+| C004        | 2020-12-24 |        4 | T05      |     104 |     30 |    2 |           32 | C004        |        4 | T05      |
+| C005        | 2020-12-24 |        5 | T01      |     105 |     60 |    5 |           65 | C005        |        5 | T01      |
+| C006        | 2020-12-26 |        6 | T05      |     106 |    160 |    8 |          168 | C006        |        6 | T05      |
+| C007        | 2020-12-26 |        7 | T02      |     107 |    270 |   12 |          282 | C007        |        7 | T02      |
+| C008        | 2020-12-27 |        8 | T01      |     108 |    300 |   15 |          315 | C008        |        8 | T01      |
+| C009        | 2020-12-27 |        9 | T03      |     109 |    300 |   15 |          315 | C009        |        9 | T03      |
+| C010        | 2020-12-28 |       10 | T05      |     110 |    120 |    6 |          126 | C010        |       10 | T05      |
+| C011        | 2021-01-01 |       11 | T01      |     111 |     30 |    2 |           32 | C011        |       11 | T01      |
+| C012        | 2021-01-01 |       12 | T02      |     112 |     60 |    5 |           65 | C012        |       12 | T02      |
+| C013        | 2021-01-02 |       13 | T03      |     113 |    160 |    8 |          168 | C013        |       13 | T03      |
+| C014        | 2021-01-03 |       14 | T01      |     114 |     90 |    6 |           96 | C014        |       14 | T01      |
++-------------+------------+----------+----------+---------+--------+------+--------------+-------------+----------+----------+
+
+
+
+--------------------------------------------------------------------------------------------------------
+===============================================================================
+
+
+3. RIGHT JOIN
+
+TABLE JOIN :- TO SHOW CUSTOMER BILL BYE CUSTOMER_ID
+
+mysql> SELECT * FROM CUSTOMER RIGHT JOIN  BILL ON BILL.CUSTOMER_ID = CUSTOMER.CUSTOMER_ID;
++-------------+----------------------+------------+---------+------------+-----------------------+---------+--------+------+--------------+-------------+----------+----------+
+| Customer_Id | Cname                | City       | Pincode | Contact    | Email_Id              | Bill_No | Amount | Tax  | Total_Amount | Customer_id | Order_id | Table_id |
++-------------+----------------------+------------+---------+------------+-----------------------+---------+--------+------+--------------+-------------+----------+----------+
+| C001        | Ashwini Jadhav       | Nashik     | 422656  | 8648664858 | AshwiniJ@gmail.com    |     101 |     30 |    2 |           32 | C001        |        1 | T03      |
+| C002        | Atul Suryavanshi     | Kolhapur   | 424587  | 9845631245 | Atul12@gmail.com      |     102 |    300 |   25 |          315 | C002        |        2 | T01      |
+| C003        | Bimensh Yadav        | Mumbai     | 400002  | 8648458965 | Byadav45@gmail.com    |     103 |    120 |    6 |          126 | C003        |        3 | T02      |
+| C004        | Chirag Dave          | Mumbai     | 400454  | 9878654858 | ChiragDave4@gmail.com |     104 |     30 |    2 |           32 | C004        |        4 | T05      |
+| C005        | Ankit Sonawane       | Mumbai     | 411454  | 9564877219 | Ankit123@gmail.com    |     105 |     60 |    5 |           65 | C005        |        5 | T01      |
+| C006        | Ankeeta Pol          | Sangli     | 422632  | 8645794858 | Ankeetap@gmail.com    |     106 |    160 |    8 |          168 | C006        |        6 | T05      |
+| C007        | Anirudhha kingaonkar | Aurangabad | 422216  | 8648664151 | Anirudhak@gmail.com   |     107 |    270 |   12 |          282 | C007        |        7 | T02      |
+| C008        | Arati Koche          | Nagpur     | 442658  | 9564764858 | Arati@gmail.com       |     108 |    300 |   15 |          315 | C008        |        8 | T01      |
+| C009        | Anuja Padwal         | Solapur    | 322656  | 9852664858 | AnujaP@gmail.com      |     109 |    300 |   15 |          315 | C009        |        9 | T03      |
+| C010        | Anjali Deshmukh      | chandrapur | 422656  | 8648664858 | Anjali@gmail.com      |     110 |    120 |    6 |          126 | C010        |       10 | T05      |
+| C011        | Archana mahatre      | Mumbai     | 458656  | 9567664858 | Archana@gmail.com     |     111 |     30 |    2 |           32 | C011        |       11 | T01      |
+| C012        | Anup Hingmire        | Mumbai     | 4258786 | 8975664858 | Anup@gmail.com        |     112 |     60 |    5 |           65 | C012        |       12 | T02      |
+| C013        | Chhaya Munji         | Thane      | 422006  | 9845631245 | chhayam@gmail.com     |     113 |    160 |    8 |          168 | C013        |       13 | T03      |
+| C014        | Chetan Bhuvad        | Mumbai     | 400124  | 9878541263 | chetanb12@gmail.com   |     114 |     90 |    6 |           96 | C014        |       14 | T01      |
++-------------+----------------------+------------+---------+------------+-----------------------+---------+--------+------+--------------+-------------+----------+----------+
+
+
+
+
+=====================================================END JOINS================================================================
+
+1. MAX FUNCTION
+
+ SELECT max(Emp_sal),ename,designation,emp_id from employee;
++--------------+----------------+-------------+--------+
+| max(Emp_sal) | ename          | designation | emp_id |
++--------------+----------------+-------------+--------+
+|       170000 | Aniket Darunde | Manager     | E01    |
++--------------+----------------+-------------+--------+
+
+---------------------------------------------------------------
+
+2. COUNT FUNCTION
+
+
+mysql> SELECT count(emp_id),ename,designation,emp_id from employee;
++---------------+----------------+-------------+--------+
+| count(emp_id) | ename          | designation | emp_id |
++---------------+----------------+-------------+--------+
+|             7 | Aniket Darunde | Manager     | E01    |
++---------------+----------------+-------------+--------+
+
+
+mysql> SELECT count(emp_id) from employee;
++---------------+
+| count(emp_id) |
++---------------+
+|             7 |
++---------------+
+
+
+mysql> SELECT count(emp_id) from employee where designation = 'Manager';
++---------------+
+| count(emp_id) |
++---------------+
+|             2 |
++---------------+
+
+
+mysql> SELECT count(emp_id) from employee where designation = 'Waiter';
++---------------+
+| count(emp_id) |
++---------------+
+|             3 |
++---------------+
+
+
+mysql> SELECT count(emp_id) from employee where designation = 'Chef';
++---------------+
+| count(emp_id) |
++---------------+
+|             2 |
++---------------+
+
+
+-------------------------------------------------------------
+
+3. MIN
+
+
+mysql> SELECT min(Emp_sal) from employee;
++--------------+
+| min(Emp_sal) |
++--------------+
+|        14000 |
++--------------+
+
+-------------------------------------------------------
+
+4. AVG
+
+mysql> SELECT AVG(Emp_sal) from employee;
++--------------+
+| AVG(Emp_sal) |
++--------------+
+|        63000 |
++--------------+
+
+---------------------------------------
+
+
+
+
+=====================================START INDEX======================================================
+
+
+////////////////////////INDEX/////////////////////////////////
+
+1.
+
+create unique index Menu_Index on Menu(Menu_id);
+
+-----------------------------------------------
+2.
+
+create index Food_Name on Menu (Food_name);
+
+------------------------------------------------
+show index from Menu;
+
+
+
+============================================END INDEX=========================================================
+
+
+//////////////////////////////VIEW/////////////////////////////
+
+
+
+create view Bills_By_date
+as
+select cname , od.order_id ,od.order_date, food_name , b.Total_amount from customer c 
+inner join order_details od 
+on c.customer_id=od.customer_id
+inner join order_items oi
+on oi.order_id = od.order_id
+inner join bill b
+on c.customer_id = b.customer_id
+where od.order_date='2020-12-23'
+group by od.order_id;
+
+select * from Bills_by_date;
+
+
+
+==================================================END VIEW===============================================================================================
+
+///////////////////////////////////////////////////////EXTRA QUERRIES////////////////////////////////////////////////////////////////////////
+
+1.
+
+	select Ename , emp_sal 'max sal' from employee
+        where emp_sal=(select  max(emp_sal) from employee);
+        
+2.    
+        select Ename , emp_sal '2nd max sal ' from employee
+        where emp_sal=(select max(emp_sal) from  Employee where emp_sal not in (select max(emp_sal) from Employee ));
+
+3.
+      
+        select ename, emp_sal 'min sal ' from employee
+	where emp_sal=(SELECT min(Emp_sal) from employee);
+
+4.
+ 	SELECT emp_id,ename,
+		CASE
+		WHEN emp_sal >20000
+		THEN  "Salary is greater than 20000"
+		WHEN emp_sal <20000
+		THEN  "Salary is less than 20000"
+		ELSE  "Salary is 20000" 
+		END AS  "What Salary?"
+		FROM employee;
+
+
+
+
+
+===========================================================================END QURRIES=================================================================
+
